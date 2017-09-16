@@ -38,16 +38,16 @@ io.on('connection', function(socket)
 	});
 
 	socket.on('turno', function(turno){
-		console.log('La caja No. '+turno.caja+' a tomado el turno: '+turno.letra+''+ turno.turno+' y el asunto: '+turno.asunto);
-		logger.info('La caja No. '+turno.caja+' a tomado el turno: '+turno.letra+''+ turno.turno+' y el asunto: '+turno.asunto);
-		io.emit('turno', { caja: turno.caja, turno: turno.turno, asunto: turno.asunto, letra: turno.letra, tipo: turno.tipo });
+		console.log('La caja No. '+turno.caja+' a tomado el turno: '+turno.letra+''+ turno.turno );
+		logger.info('La caja No. '+turno.caja+' a tomado el turno: '+turno.letra+''+ turno.turno );
+		io.emit('turno', { caja: turno.caja, turno: turno.turno, letra: turno.letra, tipo: turno.tipo });
 	
 	});
 	socket.on('termino', function(turno){
-		logger.info('La caja No. '+turno.caja+' termino el turno: '+turno.letra+''+ turno.turno+' y el asunto: '+turno.asunto);
+		logger.info('La caja No. '+turno.caja+' termino el turno: '+turno.letra+''+ turno.turno+' y el asunto: '+turno.asunto+' - '+turno.subasunto );
 	});
 	socket.on('abandono',function(turno){
-		logger.info('La caja No. '+turno.caja+' dio por abandonado el turno: '+turno.letra+''+ turno.turno+' y el asunto: '+turno.asunto);
+		logger.info('La caja No. '+turno.caja+' dio por abandonado el turno: '+turno.letra+''+ turno.turno );
 	});
 	socket.on('comercial',function(){
 		logger.info('Nuevo comercial');
